@@ -76,7 +76,7 @@ class MyDrawer extends StatelessWidget {
               }
           ),
           ListTile(
-              leading: const Icon(Icons.smart_button),
+              leading: const Icon(Icons.input),
               title: const Text('Input 예제'),
               onTap: () {
                 Navigator.pushNamed(
