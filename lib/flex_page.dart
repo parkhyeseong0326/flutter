@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello/drawer.dart';
 
 class FlexPage extends StatefulWidget {
   const FlexPage({super.key});
@@ -14,6 +15,7 @@ class _FlexPageState extends State<FlexPage> {
       appBar: AppBar(
         title: const Text("Flexible 예제"),
       ),
+      drawer: const MyDrawer(),
       body: Row(
         children: [
           Flexible(
