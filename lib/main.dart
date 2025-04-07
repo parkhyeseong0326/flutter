@@ -4,6 +4,7 @@ import 'package:hello/flex_page.dart';
 import 'package:hello/image_page.dart';
 import 'package:hello/input_page.dart';
 import 'package:hello/layout_page.dart';
+import 'package:hello/list_page.dart';
 import 'package:hello/popup_page.dart';
 import 'package:hello/setting_page.dart';
 import 'drawer.dart';
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
         '/flex': (context) => const FlexPage(),
         '/image': (context) => const ImagePage(),
         '/button': (context) => const ButtonPage(),
-        '/input': (context) => const InputPage()
+        '/input': (context) => const InputPage(),
+        '/list' : (context) => const ListPage(),
       },
     );
   }
