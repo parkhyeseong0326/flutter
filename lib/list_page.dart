@@ -64,6 +64,17 @@
                               SnackBar(content: Text('${fruits[index]}를 선택했어요!'))
                           );
                         },
+                        onLongPress: () {
+                          final deletedItem = fruits[index];
+                          setState(() {
+                            fruits.removeAt(index);
+                          });
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('$deletedItem를 삭제함!'))
+                          );
+
+                        },
                       );
                   }
               ),
