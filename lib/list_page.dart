@@ -1,17 +1,40 @@
   import 'package:flutter/material.dart';
+  import 'package:shared_preferences/shared_preferences.dart';
 
   class ListPage extends StatefulWidget {
     const ListPage({super.key});
-
     @override
     State<ListPage> createState() => _ListPageState();
   }
 
   class _ListPageState extends State<ListPage> {
 
-    final List<String> fruits = ["사과", "바나나", "포도", "딸기", "복숭아"];
+    List<String> fruits = [];
     final TextEditingController _controller = TextEditingController();
-    final text = "";
+
+
+    @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _loadFruits();
+  }
+
+  void _loadFruits() async {
+      final prefs = await SharedPreferences.getInstance();
+      final saveData = prefs.getStringList("fruits");
+      if (saveData != null ) {
+        setState(() {
+          fruits = saveData;
+        });
+      }
+  }
+
+
+  void _saveFruits() async {
+    final prefs = await SharedPreferences.getInstance();
+    final saveData = prefs.setStringList("fruits",fruits);
+    }
 
 
     @override
@@ -44,6 +67,7 @@
                               fruits.add(text);
                               _controller.clear();
                             });
+                            _saveFruits();
                           }
                         },
                         child: const Text("추가")
@@ -86,6 +110,7 @@
                                             setState(() {
                                               fruits[index] = newText;
                                              });
+                                            _saveFruits();
                                           }
                                         },
                                         child: const Text("저장"),
@@ -101,6 +126,7 @@
                           setState(() {
                             fruits.removeAt(index);
                           });
+                          _saveFruits();
 
                           ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('$deletedItem를 삭제함!'))
