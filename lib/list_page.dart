@@ -56,6 +56,16 @@
                             hintText: "아이템 입력",
                             border: OutlineInputBorder()
                           ),
+                          onSubmitted: (value) {
+                            final text = value.trim();
+                            if (text.isNotEmpty) {
+                              setState(() {
+                                fruits.add(text);
+                                _controller.clear();
+                              });
+                              _saveFruits();
+                            }
+                          },
                         )
                     ),
                     const SizedBox(width: 10),
